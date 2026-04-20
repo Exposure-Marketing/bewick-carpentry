@@ -25,19 +25,22 @@ import Layout from '../layouts/Layout.astro';
           Get in Touch
         </button>
       </div>
-      <button id="v2-menu-btn" class="md:hidden p-2 nav-link" aria-label="Open menu" aria-expanded="false" aria-controls="v2-mobile-menu">
-        <svg width="22" height="16" viewBox="0 0 22 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
-          <line x1="0" y1="1"  x2="22" y2="1"/>
-          <line x1="0" y1="8"  x2="22" y2="8"/>
-          <line x1="0" y1="15" x2="22" y2="15"/>
-        </svg>
-      </button>
+      <div class="md:hidden flex items-center gap-3">
+        <button data-open-modal class="nav-cta text-xs px-4 py-2">Get in Touch</button>
+        <button id="v2-menu-btn" class="p-2 nav-link" aria-label="Open menu" aria-expanded="false" aria-controls="v2-mobile-menu">
+          <svg width="22" height="16" viewBox="0 0 22 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+            <line x1="0" y1="1"  x2="22" y2="1"/>
+            <line x1="0" y1="8"  x2="22" y2="8"/>
+            <line x1="0" y1="15" x2="22" y2="15"/>
+          </svg>
+        </button>
+      </div>
     </div>
     <!-- Mobile menu -->
     <div id="v2-mobile-menu" class="hidden flex-col px-6 pb-6 pt-2 border-t border-current/10">
       <a href="#v2-services" class="nav-link font-display text-xl tracking-wider uppercase py-3 no-underline block border-b border-current/10">Services</a>
       <a href="#v2-work"     class="nav-link font-display text-xl tracking-wider uppercase py-3 no-underline block border-b border-current/10">Work</a>
-      <a href="#v2-contact"  class="nav-link font-display text-xl tracking-wider uppercase py-3 no-underline block">Contact</a>
+      <a href="#v2-contact"  class="nav-link font-display text-xl tracking-wider uppercase py-3 no-underline block border-b border-current/10">Contact</a>
     </div>
   </nav>
 
@@ -68,7 +71,7 @@ import Layout from '../layouts/Layout.astro';
     <div class="relative z-[11] flex flex-col justify-end flex-1 px-6 md:px-10 lg:px-16 pb-10 md:pb-24 pt-24 md:pt-32">
 
       <!-- Eyebrow -->
-      <p id="hero-eyebrow" class="font-body text-gold/60 text-xs tracking-[0.35em] uppercase mb-6 md:mb-8">
+      <p id="hero-eyebrow" class="font-body text-gold/60 text-xs tracking-[0.35em] uppercase mb-2">
         Greater Victoria, BC
       </p>
 
@@ -139,7 +142,7 @@ import Layout from '../layouts/Layout.astro';
       <!-- Section header -->
       <div class="flex items-end justify-between mb-14 md:mb-20 pb-6 border-b border-cream/10">
         <div>
-          <p class="v2-reveal font-body text-gold text-xs tracking-[0.3em] uppercase mb-3">What We Do</p>
+          <p class="v2-reveal font-body text-gold text-xs tracking-[0.3em] uppercase mb-2">What We Do</p>
           <h2 class="v2-split font-display text-cream text-4xl md:text-5xl lg:text-6xl tracking-wide leading-tight uppercase">
             Our Services
           </h2>
@@ -156,21 +159,21 @@ import Layout from '../layouts/Layout.astro';
             num: '01',
             title: 'Outdoor Structures',
             icon: '/images/icon-structures.svg',
-            desc: 'Decks, sheds, pergolas, fences — designed and built to withstand BC coastal weather while elevating your outdoor space.',
+            desc: 'Decks, sheds, pergolas, and fences built to handle BC coastal weather and look great doing it.',
             tags: ['Decks', 'Sheds', 'Pergolas', 'Fences'],
           },
           {
             num: '02',
             title: 'Renovations & Repairs',
             icon: '/images/icon-renovation.svg',
-            desc: 'Interior and exterior renovations done right and on time. From framing to finish work, every job reflects a commitment to quality.',
+            desc: 'Interior and exterior renovations done right and on time. From framing to finish work, no shortcuts.',
             tags: ['Interior', 'Exterior', 'Framing', 'Finish Work'],
           },
           {
             num: '03',
             title: 'Pressure Washing',
             icon: '/images/icon-cleaning.svg',
-            desc: 'Deep cleaning for driveways, decks, siding, and fences. Restore the look of your property with professional-grade equipment.',
+            desc: 'Deep cleaning for driveways, decks, siding, and fences. Makes a bigger difference than you think.',
             tags: ['Driveways', 'Decks', 'Siding'],
           },
           {
@@ -184,7 +187,7 @@ import Layout from '../layouts/Layout.astro';
             num: '05',
             title: 'Small Furniture Builds',
             icon: '/images/icon-furniture.svg',
-            desc: 'Custom small-scale furniture built to your specifications. Functional, durable, and crafted with the same care as every project.',
+            desc: 'Custom small-scale furniture built to your specs. Same care and attention as any job we take on.',
             tags: ['Custom', 'Built-to-Order'],
           },
         ].map((s, i) => (
@@ -230,7 +233,7 @@ import Layout from '../layouts/Layout.astro';
 
       <!-- Stats -->
       <div>
-        <p class="v2-reveal font-body text-coal/50 text-xs tracking-[0.3em] uppercase mb-10">Proven Results</p>
+        <p class="v2-reveal font-body text-coal/50 text-xs tracking-[0.3em] uppercase mb-2">Proven Results</p>
         <div class="divide-y divide-coal/10">
           {[
             { num: 7,   suffix: '+',  label: 'Years of experience in Greater Victoria' },
@@ -271,7 +274,7 @@ import Layout from '../layouts/Layout.astro';
       <!-- Section header -->
       <div class="flex items-end justify-between mb-14 md:mb-16 pb-6 border-b border-cream/10">
         <div>
-          <p class="v2-reveal font-body text-gold text-xs tracking-[0.3em] uppercase mb-3">Portfolio</p>
+          <p class="v2-reveal font-body text-gold text-xs tracking-[0.3em] uppercase mb-2">Portfolio</p>
           <h2 class="v2-split font-display text-cream text-4xl md:text-5xl lg:text-6xl tracking-wide leading-tight uppercase">
             Our Work
           </h2>
@@ -329,25 +332,25 @@ import Layout from '../layouts/Layout.astro';
 
       <!-- Text -->
       <div>
-        <p class="v2-reveal font-body text-rust text-xs tracking-[0.3em] uppercase mb-6">Our Philosophy</p>
+        <p class="v2-reveal font-body text-rust text-xs tracking-[0.3em] uppercase mb-2">Our Philosophy</p>
         <h2 class="v2-split font-display text-coal text-3xl md:text-4xl lg:text-5xl tracking-wide leading-tight uppercase mb-8">
           If You're Going to Do It, Do It Right
         </h2>
         <p class="v2-reveal font-body text-coal/65 text-lg leading-9 mb-10">
-          Bewick Carpentry is built on the belief that if you are going to do something, do it to the absolute best of your abilities. Every job — big or small — gets the same care and craftsmanship. Serving the Greater Victoria area with honesty, quality, and pride.
+          Bewick Carpentry is built on the belief that if you are going to do something, do it to the absolute best of your abilities. Every job, big or small, gets the same care and attention. Serving the Greater Victoria area with honesty, quality, and pride.
         </p>
 
         <!-- Feature blocks -->
         <div class="v2-reveal grid grid-cols-1 sm:grid-cols-3 gap-3 md:gap-4">
           {[
-            { label: 'Quality',        desc: 'Every job done to the highest standard' },
-            { label: 'Craftsmanship',  desc: 'Carrying on the Canadian tradition' },
+            { label: 'Quality',        desc: 'No cutting corners, no matter the job' },
+            { label: 'Craftsmanship',  desc: 'Built to last, not just to look good' },
             { label: 'Efficiency',     desc: 'On time and on budget, every time' },
           ].map(f => (
-            <div class="border border-coal/15 bg-coal/5 overflow-hidden text-center">
+            <div class="border border-coal/20 overflow-hidden text-center">
               <div class="h-0.5 w-full bg-gold"></div>
               <div class="p-5 md:p-6">
-                <p class="font-display text-coal text-base md:text-lg tracking-wide uppercase mb-2">{f.label}</p>
+                <p class="font-display text-coal text-xl md:text-2xl tracking-wide uppercase mb-2">{f.label}</p>
                 <p class="font-body text-coal/55 text-sm leading-6">{f.desc}</p>
               </div>
             </div>
@@ -372,7 +375,7 @@ import Layout from '../layouts/Layout.astro';
     </div>
 
     <div class="max-w-7xl mx-auto relative z-[11]">
-      <p class="v2-reveal font-body text-gold/60 text-xs tracking-[0.3em] uppercase mb-6">Ready to Start?</p>
+      <p class="v2-reveal font-body text-gold/60 text-xs tracking-[0.3em] uppercase mb-2">Ready to Start?</p>
       <h2 class="v2-split font-display text-gold text-5xl md:text-7xl lg:text-8xl tracking-wide uppercase leading-none mb-14 md:mb-20">
         Get in<br/>Touch
       </h2>
@@ -459,28 +462,37 @@ import Layout from '../layouts/Layout.astro';
           </button>
         </div>
         <h2 id="modal-title" class="font-display text-gold text-3xl tracking-wider uppercase mb-8 leading-tight">Get in Touch</h2>
-        <div class="space-y-5">
-          <a href="tel:2505349137" class="flex items-center gap-4 group no-underline">
-            <div class="w-10 h-10 border border-gold/40 flex items-center justify-center shrink-0 group-hover:bg-gold/10 transition-colors">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" class="text-gold">
-                <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.07 1.18 2 2 0 012.06 0h3a2 2 0 012 1.72 12.8 12.8 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.8 12.8 0 002.81.7A2 2 0 0122 14.92z"/>
-              </svg>
+        <div class="flex flex-col gap-3">
+          <a href="tel:2505349137" class="group no-underline border border-gold/30 px-5 py-4 flex items-center justify-between hover:border-gold hover:bg-gold/10 transition-all duration-200">
+            <div>
+              <p class="font-body text-gold/50 text-xs tracking-[0.25em] uppercase mb-0.5">Phone</p>
+              <p class="font-display text-gold text-xl tracking-wider">250-534-9137</p>
             </div>
-            <span class="font-display text-gold text-xl tracking-wider group-hover:text-gold-light transition-colors">250-534-9137</span>
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" class="text-gold/40 group-hover:text-gold group-hover:translate-x-1 transition-all duration-200 shrink-0">
+              <path d="M2 7h10M7 2l5 5-5 5"/>
+            </svg>
           </a>
-          <a href="mailto:lukasbewick@gmail.com" class="flex items-center gap-4 group no-underline">
-            <div class="w-10 h-10 border border-gold/40 flex items-center justify-center shrink-0 group-hover:bg-gold/10 transition-colors">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" class="text-gold">
-                <rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/>
-              </svg>
+          <a href="mailto:lukasbewick@gmail.com" class="group no-underline border border-gold/30 px-5 py-4 flex items-center justify-between hover:border-gold hover:bg-gold/10 transition-all duration-200">
+            <div>
+              <p class="font-body text-gold/50 text-xs tracking-[0.25em] uppercase mb-0.5">Email</p>
+              <p class="font-display text-gold text-xl tracking-wider break-all">lukasbewick@gmail.com</p>
             </div>
-            <span class="font-display text-gold text-lg tracking-wider group-hover:text-gold-light transition-colors break-all">lukasbewick@gmail.com</span>
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" class="text-gold/40 group-hover:text-gold group-hover:translate-x-1 transition-all duration-200 shrink-0 ml-3">
+              <path d="M2 7h10M7 2l5 5-5 5"/>
+            </svg>
           </a>
-          <a href="https://www.instagram.com/bewickcarpentry" target="_blank" rel="noopener noreferrer" class="flex items-center gap-4 group no-underline">
-            <div class="w-10 h-10 border border-gold/40 flex items-center justify-center shrink-0 group-hover:bg-gold/10 transition-colors">
-              <img src="/images/instagram.svg" alt="" class="w-5 h-5" />
+          <a href="https://www.instagram.com/bewickcarpentry" target="_blank" rel="noopener noreferrer"
+            class="group no-underline border border-gold/30 px-5 py-4 flex items-center justify-between hover:border-gold hover:bg-gold/10 transition-all duration-200">
+            <div>
+              <p class="font-body text-gold/50 text-xs tracking-[0.25em] uppercase mb-0.5">Instagram</p>
+              <p class="font-display text-gold text-xl tracking-wider flex items-center gap-2">
+                <img src="/images/instagram.svg" alt="" class="w-4 h-4 shrink-0" />
+                @bewickcarpentry
+              </p>
             </div>
-            <span class="font-display text-gold text-lg tracking-wider uppercase group-hover:text-gold-light transition-colors">@bewickcarpentry</span>
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" class="text-gold/40 group-hover:text-gold group-hover:translate-x-1 transition-all duration-200 shrink-0 ml-3">
+              <path d="M2 7h10M7 2l5 5-5 5"/>
+            </svg>
           </a>
         </div>
         <div class="mt-8 pt-6 border-t border-gold/20 text-center">
