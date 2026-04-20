@@ -49,7 +49,7 @@ import Layout from '../layouts/Layout.astro';
   <!-- ════════════════════════════════════════════════════
        HERO
   ═══════════════════════════════════════════════════════ -->
-  <section id="v2-hero" class="relative min-h-[92svh] flex flex-col bg-coal overflow-hidden grain">
+  <section id="v2-hero" class="relative min-h-[92svh] bg-coal overflow-hidden grain">
 
     <!-- Background photo with parallax container -->
     <div id="hero-bg" class="absolute inset-0">
@@ -67,10 +67,10 @@ import Layout from '../layouts/Layout.astro';
       <div class="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-coal to-transparent"></div>
     </div>
 
-    <!-- Hero content -->
-    <div class="relative z-[11] flex flex-col justify-end flex-1 px-6 md:px-10 lg:px-16 pb-10 md:pb-24 pt-24 md:pt-32">
+    <!-- Hero content: anchored to bottom-left — no flexbox needed -->
+    <div class="absolute bottom-0 left-0 right-0 z-[11] px-6 md:px-10 lg:px-16 pb-10 md:pb-24">
 
-      <!-- Eyebrow -->
+      <!-- Eyebrow: sits immediately above heading -->
       <p id="hero-eyebrow" class="font-body text-gold/60 text-xs tracking-[0.35em] uppercase mb-2">
         Greater Victoria, BC
       </p>
@@ -81,11 +81,9 @@ import Layout from '../layouts/Layout.astro';
         <span class="hero-word">Is Everything</span>
       </h1>
 
-      <!-- Divider line: sits between heading and subtext, desktop only -->
-      <div class="hidden md:block def-line-h mb-8"></div>
-
       <!-- Subtext + CTA -->
       <div id="hero-sub" style="visibility: hidden;">
+        <div class="hidden md:block def-line-h mb-8"></div>
         <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 md:gap-8">
           <p class="font-body text-cream/70 text-base md:text-lg leading-8 max-w-md md:max-w-sm">
             High-quality carpentry, outdoor structures, and renovations for Greater Victoria homeowners.
@@ -348,8 +346,8 @@ import Layout from '../layouts/Layout.astro';
 
       </div>
 
-      <!-- Feature blocks — full width so text has room -->
-      <div class="v2-reveal grid grid-cols-3 gap-4 md:gap-6">
+      <!-- Feature blocks — full width, stack on mobile -->
+      <div class="v2-reveal grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
         {[
           { label: 'Quality',        desc: 'No cutting corners, no matter the job' },
           { label: 'Craftsmanship',  desc: 'Built to last, not just to look good' },
@@ -747,7 +745,7 @@ import Layout from '../layouts/Layout.astro';
       ease: EASE_OUT_EXPO,
       scrollTrigger: {
         trigger: el,
-        start: 'top 85%',
+        start: 'top 92%',
       },
     });
   });
