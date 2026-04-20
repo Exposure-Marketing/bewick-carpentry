@@ -57,12 +57,12 @@ const values = ['Quality', 'Craftsmanship', 'Efficiency'];
       <img
         src="/images/logo.png"
         alt="Bewick Carpentry"
-        class="w-60 sm:w-72 md:w-80 lg:w-96 mb-8 drop-shadow-lg"
+        class="hero-logo w-60 sm:w-72 md:w-80 lg:w-96 mb-8 drop-shadow-lg"
       />
-      <p class="font-display text-gold text-xl md:text-2xl lg:text-3xl tracking-[0.3em] uppercase mb-10 leading-relaxed">
+      <p class="hero-tagline font-display text-gold text-xl md:text-2xl lg:text-3xl tracking-[0.3em] uppercase mb-10 leading-relaxed">
         Craftsmanship<br class="hidden sm:block" /> is everything
       </p>
-      <div class="flex flex-col sm:flex-row gap-4">
+      <div class="hero-ctas flex flex-col sm:flex-row gap-4">
         <button
           data-open-modal
           class="bg-forest text-gold font-display text-base tracking-[0.2em] uppercase px-8 py-4 border-2 border-gold hover:bg-gold hover:text-coal transition-all duration-200 text-center"
@@ -79,7 +79,7 @@ const values = ['Quality', 'Craftsmanship', 'Efficiency'];
     </div>
 
     <!-- Right panel: hero photo -->
-    <div class="md:w-5/12 lg:w-1/2 h-72 sm:h-96 md:h-auto relative overflow-hidden">
+    <div class="hero-photo md:w-5/12 lg:w-1/2 h-72 sm:h-96 md:h-auto relative overflow-hidden">
       <img
         src="/images/hero-interior.jpg"
         alt="Timber frame interior built by Bewick Carpentry"
@@ -98,7 +98,7 @@ const values = ['Quality', 'Craftsmanship', 'Efficiency'];
     <div class="max-w-5xl mx-auto space-y-16">
 
       <!-- Tagline row -->
-      <div class="flex flex-col md:flex-row items-center md:items-start gap-8 md:gap-12">
+      <div class="reveal flex flex-col md:flex-row items-center md:items-start gap-8 md:gap-12">
         <p class="font-display text-gold text-2xl md:text-3xl leading-snug tracking-wide flex-1">
           Focused on providing high&nbsp;quality carpentry based services inside
           and outside of your home.
@@ -107,17 +107,18 @@ const values = ['Quality', 'Craftsmanship', 'Efficiency'];
           src="/images/saw.png"
           alt=""
           aria-hidden="true"
-          class="w-44 md:w-56 opacity-80 flex-shrink-0 mix-blend-multiply"
+          class="float-anim w-44 md:w-56 opacity-80 flex-shrink-0 mix-blend-multiply"
         />
       </div>
 
       <!-- Philosophy row -->
-      <div class="flex flex-col md:flex-row items-center md:items-start gap-10 md:gap-16">
+      <div class="reveal flex flex-col md:flex-row items-center md:items-start gap-10 md:gap-16">
         <img
           src="/images/mallet.png"
           alt=""
           aria-hidden="true"
-          class="w-16 md:w-24 flex-shrink-0 order-last md:order-first mix-blend-multiply opacity-90"
+          class="float-anim w-16 md:w-24 flex-shrink-0 order-last md:order-first mix-blend-multiply opacity-90"
+          style="animation-delay: 0.6s;"
         />
         <p class="text-cream text-lg md:text-xl leading-9 max-w-2xl">
           Bewick Carpentry is based on the philosophy that if you are going to
@@ -140,17 +141,17 @@ const values = ['Quality', 'Craftsmanship', 'Efficiency'];
 
       <!-- Text content -->
       <div>
-        <h2 class="font-display text-gold text-4xl md:text-5xl lg:text-6xl tracking-wide mb-8 leading-tight">
+        <h2 class="reveal font-display text-gold text-4xl md:text-5xl lg:text-6xl tracking-wide mb-8 leading-tight">
           What We Do
         </h2>
-        <p class="text-cream text-lg md:text-xl leading-9 mb-10">
+        <p class="reveal text-cream text-lg md:text-xl leading-9 mb-10">
           Our niche is building outdoor structures and small scale renovations
           and repairs. With a wide range of expertise, Bewick Carpentry can also
           take care of many different odd jobs that need to be done such as
           pressure washing, landscaping and small furniture builds.
         </p>
 
-        <ul class="space-y-4 mb-12">
+        <ul class="stagger space-y-4 mb-12">
           {services.map(service => (
             <li class="flex items-center gap-4 text-cream">
               <span class="text-gold text-xl leading-none select-none">—</span>
@@ -159,7 +160,7 @@ const values = ['Quality', 'Craftsmanship', 'Efficiency'];
           ))}
         </ul>
 
-        <div class="flex flex-wrap gap-3">
+        <div class="stagger flex flex-wrap gap-3">
           {values.map(v => (
             <span class="font-display text-sm tracking-[0.2em] uppercase text-coal bg-gold px-5 py-2">{v}</span>
           ))}
@@ -167,7 +168,7 @@ const values = ['Quality', 'Craftsmanship', 'Efficiency'];
       </div>
 
       <!-- Photo -->
-      <div class="relative aspect-[3/4] md:aspect-auto md:h-[580px] overflow-hidden">
+      <div class="reveal-fade relative aspect-[3/4] md:aspect-auto md:h-[580px] overflow-hidden">
         <img
           src="/images/carpenter-sunset.jpg"
           alt="Carpenter at work during golden hour on a Victoria renovation"
@@ -187,12 +188,12 @@ const values = ['Quality', 'Craftsmanship', 'Efficiency'];
     <div class="max-w-5xl mx-auto">
 
       <!-- Decorative starburst + tree -->
-      <div class="flex justify-center mb-14 relative h-32 md:h-40">
+      <div class="reveal flex justify-center mb-14 relative h-32 md:h-40">
         <img
           src="/images/starburst.svg"
           alt=""
           aria-hidden="true"
-          class="absolute inset-0 w-full max-w-[160px] md:max-w-[200px] mx-auto h-full object-contain opacity-70"
+          class="spin-slow absolute inset-0 w-full max-w-[160px] md:max-w-[200px] mx-auto h-full object-contain opacity-70"
         />
         <img
           src="/images/tree.png"
@@ -205,7 +206,7 @@ const values = ['Quality', 'Craftsmanship', 'Efficiency'];
       <!-- Contact body -->
       <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-10">
 
-        <div>
+        <div class="reveal">
           <h2 class="font-display text-gold text-5xl md:text-7xl lg:text-8xl tracking-widest uppercase mb-7 leading-none">
             Contact
           </h2>
@@ -230,7 +231,7 @@ const values = ['Quality', 'Craftsmanship', 'Efficiency'];
         </div>
 
         <!-- Instagram -->
-        <div class="flex items-center gap-3 group">
+        <div class="reveal flex items-center gap-3 group">
           <img
             src="/images/instagram.svg"
             alt="Instagram"
@@ -348,6 +349,13 @@ const values = ['Quality', 'Craftsmanship', 'Efficiency'];
   mobileMenu?.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => mobileMenu.classList.remove('open'));
   });
+
+  // ── Scroll reveals ───────────────────────────────────
+  const observer = new IntersectionObserver(
+    entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
+    { threshold: 0.1 }
+  );
+  document.querySelectorAll('.reveal, .reveal-fade, .stagger').forEach(el => observer.observe(el));
 
   // ── Contact modal ────────────────────────────────────
   const modal    = document.getElementById('contact-modal');
