@@ -21,6 +21,10 @@
   --font-body:    "Lato", sans-serif;
 }
 
+/* ── Reset ────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+body { margin: 0; padding: 0; }
+
 /* ── Base ─────────────────────────────────────────────── */
 html {
   scroll-behavior: smooth;

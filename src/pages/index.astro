@@ -49,7 +49,7 @@ import Layout from '../layouts/Layout.astro';
   <!-- ════════════════════════════════════════════════════
        HERO
   ═══════════════════════════════════════════════════════ -->
-  <section id="v2-hero" class="relative min-h-[100svh] flex flex-col bg-coal overflow-hidden grain">
+  <section id="v2-hero" class="relative min-h-[92svh] flex flex-col bg-coal overflow-hidden grain">
 
     <!-- Background photo with parallax container -->
     <div id="hero-bg" class="absolute inset-0">
@@ -81,9 +81,11 @@ import Layout from '../layouts/Layout.astro';
         <span class="hero-word">Is Everything</span>
       </h1>
 
-      <!-- Divider line + subtext — line hidden on mobile, shown md+ -->
+      <!-- Divider line: sits between heading and subtext, desktop only -->
+      <div class="hidden md:block def-line-h mb-8"></div>
+
+      <!-- Subtext + CTA -->
       <div id="hero-sub" style="visibility: hidden;">
-        <div class="hidden md:block def-line-h mb-8"></div>
         <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 md:gap-8">
           <p class="font-body text-cream/70 text-base md:text-lg leading-8 max-w-md md:max-w-sm">
             High-quality carpentry, outdoor structures, and renovations for Greater Victoria homeowners.
@@ -322,40 +324,45 @@ import Layout from '../layouts/Layout.astro';
        PHILOSOPHY / ABOUT
   ═══════════════════════════════════════════════════════ -->
   <section class="bg-cream py-20 md:py-28 px-6 md:px-10 lg:px-16 relative overflow-hidden">
-    <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 md:gap-20 items-center relative">
+    <div class="max-w-7xl mx-auto relative">
 
-      <!-- Decorative side — saw works great on cream with multiply -->
-      <div class="v2-reveal-fade flex items-center justify-center order-last md:order-first">
-        <img src="/images/saw.png" alt="" aria-hidden="true"
-          class="w-72 md:w-[28rem] lg:w-[34rem] float-anim mix-blend-multiply opacity-60" />
+      <!-- Top: saw + text -->
+      <div class="grid md:grid-cols-2 gap-12 md:gap-20 items-center mb-14 md:mb-16">
+
+        <!-- Decorative side — saw works great on cream with multiply -->
+        <div class="v2-reveal-fade flex items-center justify-center order-last md:order-first">
+          <img src="/images/saw.png" alt="" aria-hidden="true"
+            class="w-72 md:w-[28rem] lg:w-[34rem] float-anim mix-blend-multiply opacity-60" />
+        </div>
+
+        <!-- Text -->
+        <div>
+          <p class="v2-reveal font-body text-rust text-xs tracking-[0.3em] uppercase mb-2">Our Philosophy</p>
+          <h2 class="v2-split font-display text-coal text-3xl md:text-4xl lg:text-5xl tracking-wide leading-tight uppercase mb-8">
+            If You're Going to Do It, Do It Right
+          </h2>
+          <p class="v2-reveal font-body text-coal/65 text-lg leading-9">
+            Bewick Carpentry is built on the belief that if you are going to do something, do it to the absolute best of your abilities. Every job, big or small, gets the same care and attention. Serving the Greater Victoria area with honesty, quality, and pride.
+          </p>
+        </div>
+
       </div>
 
-      <!-- Text -->
-      <div>
-        <p class="v2-reveal font-body text-rust text-xs tracking-[0.3em] uppercase mb-2">Our Philosophy</p>
-        <h2 class="v2-split font-display text-coal text-3xl md:text-4xl lg:text-5xl tracking-wide leading-tight uppercase mb-8">
-          If You're Going to Do It, Do It Right
-        </h2>
-        <p class="v2-reveal font-body text-coal/65 text-lg leading-9 mb-10">
-          Bewick Carpentry is built on the belief that if you are going to do something, do it to the absolute best of your abilities. Every job, big or small, gets the same care and attention. Serving the Greater Victoria area with honesty, quality, and pride.
-        </p>
-
-        <!-- Feature blocks -->
-        <div class="v2-reveal grid grid-cols-1 sm:grid-cols-3 gap-3 md:gap-4">
-          {[
-            { label: 'Quality',        desc: 'No cutting corners, no matter the job' },
-            { label: 'Craftsmanship',  desc: 'Built to last, not just to look good' },
-            { label: 'Efficiency',     desc: 'On time and on budget, every time' },
-          ].map(f => (
-            <div class="border border-coal/20 overflow-hidden text-center">
-              <div class="h-0.5 w-full bg-gold"></div>
-              <div class="p-5 md:p-6">
-                <p class="font-display text-coal text-xl md:text-2xl tracking-wide uppercase mb-2">{f.label}</p>
-                <p class="font-body text-coal/55 text-sm leading-6">{f.desc}</p>
-              </div>
+      <!-- Feature blocks — full width so text has room -->
+      <div class="v2-reveal grid grid-cols-3 gap-4 md:gap-6">
+        {[
+          { label: 'Quality',        desc: 'No cutting corners, no matter the job' },
+          { label: 'Craftsmanship',  desc: 'Built to last, not just to look good' },
+          { label: 'Efficiency',     desc: 'On time and on budget, every time' },
+        ].map(f => (
+          <div class="border border-coal/20 overflow-hidden text-center">
+            <div class="h-0.5 w-full bg-gold"></div>
+            <div class="p-5 md:p-8">
+              <p class="font-display text-coal text-lg md:text-2xl tracking-wide uppercase mb-2 leading-tight">{f.label}</p>
+              <p class="font-body text-coal/55 text-sm leading-6 hidden sm:block">{f.desc}</p>
             </div>
-          ))}
-        </div>
+          </div>
+        ))}
       </div>
 
     </div>
