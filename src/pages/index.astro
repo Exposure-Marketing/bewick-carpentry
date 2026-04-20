@@ -78,18 +78,20 @@ import Layout from '../layouts/Layout.astro';
         <span class="hero-word">Is Everything</span>
       </h1>
 
-      <!-- Divider line + subtext -->
-      <div id="hero-sub" class="flex flex-col md:flex-row md:items-end md:justify-between gap-8" style="visibility: hidden;">
-        <div class="def-line-h"></div>
-        <p class="font-body text-cream/70 text-base md:text-lg leading-8 max-w-md md:max-w-sm">
-          High-quality carpentry, outdoor structures, and renovations for Greater Victoria homeowners.
-        </p>
-        <button data-open-modal class="btn whitespace-nowrap self-start md:self-auto">
-          Get in Touch
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" class="inline ml-2 -translate-y-px">
-            <path d="M2 7h10M7 2l5 5-5 5"/>
-          </svg>
-        </button>
+      <!-- Divider line + subtext — line hidden on mobile, shown md+ -->
+      <div id="hero-sub" style="visibility: hidden;">
+        <div class="hidden md:block def-line-h mb-8"></div>
+        <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 md:gap-8">
+          <p class="font-body text-cream/70 text-base md:text-lg leading-8 max-w-md md:max-w-sm">
+            High-quality carpentry, outdoor structures, and renovations for Greater Victoria homeowners.
+          </p>
+          <button data-open-modal class="btn whitespace-nowrap self-start md:self-auto">
+            Get in Touch
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" class="inline ml-2 -translate-y-px">
+              <path d="M2 7h10M7 2l5 5-5 5"/>
+            </svg>
+          </button>
+        </div>
       </div>
     </div>
 
@@ -336,17 +338,17 @@ import Layout from '../layouts/Layout.astro';
         </p>
 
         <!-- Feature blocks -->
-        <div class="v2-reveal grid grid-cols-3 gap-3 md:gap-4">
+        <div class="v2-reveal grid grid-cols-1 sm:grid-cols-3 gap-3 md:gap-4">
           {[
             { label: 'Quality',        desc: 'Every job done to the highest standard' },
             { label: 'Craftsmanship',  desc: 'Carrying on the Canadian tradition' },
             { label: 'Efficiency',     desc: 'On time and on budget, every time' },
           ].map(f => (
-            <div class="border border-coal/15 bg-coal/5 pt-0 overflow-hidden">
+            <div class="border border-coal/15 bg-coal/5 overflow-hidden text-center">
               <div class="h-0.5 w-full bg-gold"></div>
-              <div class="p-3 md:p-4">
-                <p class="font-display text-coal text-sm md:text-base tracking-wide uppercase mb-1">{f.label}</p>
-                <p class="font-body text-coal/55 text-xs leading-5">{f.desc}</p>
+              <div class="p-5 md:p-6">
+                <p class="font-display text-coal text-base md:text-lg tracking-wide uppercase mb-2">{f.label}</p>
+                <p class="font-body text-coal/55 text-sm leading-6">{f.desc}</p>
               </div>
             </div>
           ))}
@@ -377,30 +379,41 @@ import Layout from '../layouts/Layout.astro';
 
       <div class="def-line-h mb-12 md:mb-16"></div>
 
-      <div class="grid md:grid-cols-3 gap-8 md:gap-0 divide-y md:divide-y-0 md:divide-x divide-gold/20">
+      <div class="grid md:grid-cols-3 gap-4 md:gap-6">
 
-        <div class="v2-reveal pt-8 md:pt-0 md:pr-10">
-          <p class="font-body text-gold/50 text-xs tracking-[0.25em] uppercase mb-3">Phone</p>
-          <a href="tel:2505349137" class="font-display text-gold text-2xl md:text-3xl tracking-wider hover:text-gold-light transition-colors no-underline block">
-            250-534-9137
-          </a>
-        </div>
+        <a href="tel:2505349137" class="contact-link v2-reveal group no-underline border border-gold/30 px-6 py-5 flex items-center justify-between hover:border-gold hover:bg-gold/10 transition-all duration-200">
+          <div>
+            <p class="font-body text-gold/50 text-xs tracking-[0.25em] uppercase mb-1">Phone</p>
+            <p class="font-display text-gold text-xl md:text-2xl tracking-wider">250-534-9137</p>
+          </div>
+          <svg width="16" height="16" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" class="text-gold/40 group-hover:text-gold group-hover:translate-x-1 transition-all duration-200 shrink-0">
+            <path d="M2 7h10M7 2l5 5-5 5"/>
+          </svg>
+        </a>
 
-        <div class="v2-reveal pt-8 md:pt-0 md:px-10">
-          <p class="font-body text-gold/50 text-xs tracking-[0.25em] uppercase mb-3">Email</p>
-          <a href="mailto:lukasbewick@gmail.com" class="font-display text-gold text-xl md:text-2xl tracking-wider hover:text-gold-light transition-colors no-underline block break-all">
-            lukasbewick@gmail.com
-          </a>
-        </div>
+        <a href="mailto:lukasbewick@gmail.com" class="contact-link v2-reveal group no-underline border border-gold/30 px-6 py-5 flex items-center justify-between hover:border-gold hover:bg-gold/10 transition-all duration-200">
+          <div>
+            <p class="font-body text-gold/50 text-xs tracking-[0.25em] uppercase mb-1">Email</p>
+            <p class="font-display text-gold text-xl md:text-2xl tracking-wider break-all">lukasbewick@gmail.com</p>
+          </div>
+          <svg width="16" height="16" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" class="text-gold/40 group-hover:text-gold group-hover:translate-x-1 transition-all duration-200 shrink-0 ml-4">
+            <path d="M2 7h10M7 2l5 5-5 5"/>
+          </svg>
+        </a>
 
-        <div class="v2-reveal pt-8 md:pt-0 md:pl-10">
-          <p class="font-body text-gold/50 text-xs tracking-[0.25em] uppercase mb-3">Instagram</p>
-          <a href="https://www.instagram.com/bewickcarpentry" target="_blank" rel="noopener noreferrer"
-            class="font-display text-gold text-xl md:text-2xl tracking-wider hover:text-gold-light transition-colors no-underline flex items-center gap-3">
-            <img src="/images/instagram.svg" alt="" class="w-6 h-6 shrink-0" />
-            @bewickcarpentry
-          </a>
-        </div>
+        <a href="https://www.instagram.com/bewickcarpentry" target="_blank" rel="noopener noreferrer"
+          class="contact-link v2-reveal group no-underline border border-gold/30 px-6 py-5 flex items-center justify-between hover:border-gold hover:bg-gold/10 transition-all duration-200">
+          <div>
+            <p class="font-body text-gold/50 text-xs tracking-[0.25em] uppercase mb-1">Instagram</p>
+            <p class="font-display text-gold text-xl md:text-2xl tracking-wider flex items-center gap-2">
+              <img src="/images/instagram.svg" alt="" class="w-5 h-5 shrink-0" />
+              @bewickcarpentry
+            </p>
+          </div>
+          <svg width="16" height="16" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" class="text-gold/40 group-hover:text-gold group-hover:translate-x-1 transition-all duration-200 shrink-0 ml-4">
+            <path d="M2 7h10M7 2l5 5-5 5"/>
+          </svg>
+        </a>
 
       </div>
 
@@ -589,7 +602,7 @@ import Layout from '../layouts/Layout.astro';
     from { transform: translateX(0); }
     to   { transform: translateX(-50%); }
   }
-  .marquee-track { animation: marquee var(--marquee-dur, 14s) linear infinite; }
+  .marquee-track { animation: marquee var(--marquee-dur, 9s) linear infinite; }
   @media (min-width: 768px) { .marquee-strip { --marquee-dur: 28s; } }
   .marquee-strip:hover .marquee-track { animation-play-state: paused; }
 
