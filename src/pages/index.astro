@@ -50,46 +50,82 @@ const values = ['Quality', 'Craftsmanship', 'Efficiency'];
   <!-- ═══════════════════════════════════════════════
        HERO
   ════════════════════════════════════════════════ -->
-  <section class="min-h-screen bg-rust flex flex-col md:flex-row">
+  <section class="relative min-h-screen bg-coal overflow-hidden">
 
-    <!-- Left panel -->
-    <div class="flex-1 flex flex-col justify-center px-8 md:px-14 lg:px-20 pt-28 pb-16 md:py-0">
-      <img
-        src="/images/logo.png"
-        alt="Bewick Carpentry"
-        class="hero-logo w-60 sm:w-72 md:w-80 lg:w-96 mb-8 drop-shadow-lg"
-      />
-      <p class="hero-tagline font-display text-gold text-xl md:text-2xl lg:text-3xl tracking-[0.3em] uppercase mb-10 leading-relaxed">
-        Craftsmanship<br class="hidden sm:block" /> is everything
-      </p>
-      <div class="hero-ctas flex flex-col sm:flex-row gap-4">
-        <button
-          data-open-modal
-          class="bg-forest text-gold font-display text-base tracking-[0.2em] uppercase px-8 py-4 border-2 border-gold hover:bg-gold hover:text-coal transition-all duration-200 text-center"
-        >
-          Get in Touch
-        </button>
-        <a
-          href="#services"
-          class="inline-block text-gold font-display text-base tracking-[0.2em] uppercase px-8 py-4 border-2 border-gold/50 hover:border-gold transition-all duration-200 text-center"
-        >
-          Our Work ↓
-        </a>
-      </div>
-    </div>
-
-    <!-- Right panel: hero photo -->
-    <div class="hero-photo md:w-5/12 lg:w-1/2 h-72 sm:h-96 md:h-auto relative overflow-hidden">
+    <!-- Photo: absolutely fills right half, bleeds behind headline -->
+    <div class="hero-photo absolute top-0 right-0 bottom-0 w-full md:w-[58%] lg:w-[54%]">
       <img
         src="/images/hero-interior.jpg"
         alt="Timber frame interior built by Bewick Carpentry"
         class="absolute inset-0 w-full h-full object-cover object-center"
         loading="eager"
       />
-      <div class="absolute inset-y-0 left-0 w-20 bg-gradient-to-r from-rust to-transparent hidden md:block"></div>
+      <!-- Left edge dissolves into coal background -->
+      <div class="absolute inset-y-0 left-0 w-40 md:w-56 lg:w-72 bg-gradient-to-r from-coal to-transparent"></div>
+      <!-- Mobile: bottom dissolves for text readability -->
+      <div class="absolute inset-x-0 bottom-0 h-56 bg-gradient-to-t from-coal to-transparent md:hidden"></div>
+      <!-- Floating location badge — desktop only -->
+      <div class="hidden md:block absolute bottom-16 left-6 lg:left-10 bg-coal/85 backdrop-blur-md border border-gold/30 px-5 py-4 shadow-2xl">
+        <p class="font-display text-gold/50 text-xs tracking-[0.25em] uppercase mb-1">Proudly serving</p>
+        <p class="font-display text-gold text-base md:text-lg tracking-wider">Greater Victoria, BC</p>
+      </div>
     </div>
 
+    <!-- Content: sits left, z above photo -->
+    <div class="relative z-10 min-h-screen flex flex-col px-8 md:px-14 lg:px-20 pt-28 md:pt-32 pb-16">
+
+      <!-- Logo -->
+      <div class="hero-logo">
+        <img src="/images/logo.png" alt="Bewick Carpentry" class="h-14 md:h-16 w-auto" />
+      </div>
+
+      <!-- Headline: large Rye type that bleeds behind the photo -->
+      <h1 class="hero-tagline font-display text-gold leading-[0.88] uppercase mt-auto pt-10 md:pt-0">
+        <span class="block text-[clamp(3rem,5.8vw,6.5rem)]">Crafts&shy;manship</span>
+        <span class="block text-[clamp(3rem,5.8vw,6.5rem)] text-gold/55">Is</span>
+        <span class="block text-[clamp(3rem,5.8vw,6.5rem)]">Everything</span>
+      </h1>
+
+      <!-- CTA row -->
+      <div class="hero-ctas flex flex-col sm:flex-row items-start sm:items-center gap-5 pt-10 md:pt-12">
+        <button
+          data-open-modal
+          class="bg-gold text-coal font-display text-sm tracking-[0.2em] uppercase px-8 py-4 hover:bg-gold-light transition-colors duration-200 whitespace-nowrap"
+        >
+          Get in Touch
+        </button>
+        <a href="tel:2505349137" class="flex items-center gap-4 group">
+          <div class="w-11 h-11 border border-gold/30 flex items-center justify-center flex-shrink-0 group-hover:border-gold group-hover:bg-gold/10 transition-all duration-200">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" class="text-gold">
+              <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.07 1.18 2 2 0 012.06 0h3a2 2 0 012 1.72 12.8 12.8 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.8 12.8 0 002.81.7A2 2 0 0122 14.92z"/>
+            </svg>
+          </div>
+          <div>
+            <p class="text-cream-dim text-xs tracking-[0.15em] uppercase mb-0.5">Call anytime</p>
+            <p class="font-display text-gold text-lg tracking-wider group-hover:text-gold-light transition-colors duration-200">250-534-9137</p>
+          </div>
+        </a>
+      </div>
+
+    </div>
   </section>
+
+  <!-- Service strip -->
+  <div class="bg-rust border-t border-gold/15 py-8 px-8 md:px-14 lg:px-20">
+    <div class="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-3 sm:divide-x divide-gold/20">
+      {[
+        { num: 'I',   title: 'Outdoor Structures',    desc: 'Decks, sheds, pergolas — built to last in BC weather.' },
+        { num: 'II',  title: 'Renovations & Repairs', desc: 'Interior and exterior work done right, on time.' },
+        { num: 'III', title: 'Odd Jobs & More',       desc: 'Pressure washing, landscaping, furniture builds.' },
+      ].map(s => (
+        <div class="px-0 sm:px-6 first:pl-0 last:pr-0 py-4 sm:py-0">
+          <p class="font-display text-gold/35 text-xs tracking-[0.3em] mb-2">{s.num}</p>
+          <h3 class="font-display text-gold text-base tracking-wide mb-1">{s.title}</h3>
+          <p class="text-cream-dim text-sm leading-6 font-body">{s.desc}</p>
+        </div>
+      ))}
+    </div>
+  </div>
 
   <!-- ═══════════════════════════════════════════════
        ABOUT
