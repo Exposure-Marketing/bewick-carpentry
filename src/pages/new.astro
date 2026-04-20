@@ -73,7 +73,7 @@ import Layout from '../layouts/Layout.astro';
       </p>
 
       <!-- Main heading — each span becomes an animated line -->
-      <h1 id="hero-heading" class="font-display text-cream uppercase leading-[0.88] mb-8 md:mb-12" style="font-size: clamp(3.5rem, 9vw, 11rem); visibility: hidden;">
+      <h1 id="hero-heading" class="font-display text-cream uppercase leading-[0.88] mb-8 md:mb-12" style="font-size: clamp(2.2rem, 5.5vw, 7rem); visibility: hidden;">
         <span class="hero-word">Craftsmanship</span>
         <span class="hero-word">Is</span>
         <span class="hero-word">Everything</span>
@@ -389,7 +389,7 @@ import Layout from '../layouts/Layout.astro';
   <!-- ════════════════════════════════════════════════════
        FOOTER
   ═══════════════════════════════════════════════════════ -->
-  <footer class="bg-coal-soft py-6 px-6 md:px-10 flex flex-col md:flex-row items-center justify-between gap-3 border-t border-white/5">
+  <footer class="bg-coal-soft py-10 px-6 md:px-10 flex flex-col md:flex-row items-center justify-between gap-4 border-t border-white/5">
     <img src="/images/logo.png" alt="Bewick Carpentry" class="h-8 w-auto opacity-60" />
     <p class="font-body text-cream-dim text-xs tracking-[0.2em] uppercase">
       © {new Date().getFullYear()} Bewick Carpentry · Greater Victoria, BC
@@ -592,10 +592,10 @@ import Layout from '../layouts/Layout.astro';
     return el.querySelectorAll<HTMLElement>('.split-line');
   }
 
-  // For section headings: split plain text into lines
+  // For section headings: split on <br> tags in markup
   function splitLines(el: HTMLElement) {
-    const rawLines = el.textContent?.split('\n').map(l => l.trim()).filter(Boolean) ?? [];
-    el.innerHTML = rawLines.map(line =>
+    const parts = el.innerHTML.split(/<br\s*\/?>/i).map(p => p.trim()).filter(Boolean);
+    el.innerHTML = parts.map(line =>
       `<span class="split-line-wrap"><span class="split-line">${line}</span></span>`
     ).join('');
     return el.querySelectorAll<HTMLElement>('.split-line');
