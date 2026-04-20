@@ -73,7 +73,7 @@ import Layout from '../layouts/Layout.astro';
       </p>
 
       <!-- Main heading — each span becomes an animated line -->
-      <h1 id="hero-heading" class="font-display text-cream uppercase leading-[0.88] mb-8 md:mb-12" style="font-size: clamp(1.7rem, 4.8vw, 6.5rem); visibility: hidden;">
+      <h1 id="hero-heading" class="font-display text-cream uppercase leading-[0.88] mb-8 md:mb-12" style="font-size: clamp(1.35rem, 4.8vw, 6.5rem); visibility: hidden;">
         <span class="hero-word">Craftsmanship</span>
         <span class="hero-word">Is Everything</span>
       </h1>
@@ -94,6 +94,24 @@ import Layout from '../layouts/Layout.astro';
     </div>
 
   </section>
+
+  <!-- ════════════════════════════════════════════════════
+       MARQUEE STRIP
+  ═══════════════════════════════════════════════════════ -->
+  <div class="marquee-strip bg-rust border-y border-gold/20 py-4 overflow-hidden">
+    <div class="marquee-track flex gap-0 whitespace-nowrap">
+      {Array.from({length: 2}).map(() => (
+        <div class="marquee-content flex items-center gap-0 shrink-0" aria-hidden="true">
+          {['Outdoor Structures', 'Renovations', 'Craftsmanship', 'Greater Victoria', 'Pressure Washing', 'Landscaping', 'Since 2017'].map(item => (
+            <span class="inline-flex items-center gap-6 px-8">
+              <span class="font-display text-gold text-sm tracking-[0.25em] uppercase">{item}</span>
+              <span class="text-gold/30 text-lg leading-none">·</span>
+            </span>
+          ))}
+        </div>
+      ))}
+    </div>
+  </div>
 
   <!-- ════════════════════════════════════════════════════
        INTRO — brief about strip
@@ -209,12 +227,14 @@ import Layout from '../layouts/Layout.astro';
         <p class="v2-reveal font-body text-coal/50 text-xs tracking-[0.3em] uppercase mb-10">Proven Results</p>
         <div class="divide-y divide-coal/10">
           {[
-            { num: '7+',  label: 'Years of experience in Greater Victoria' },
-            { num: '50+', label: 'Projects completed across the island' },
-            { num: '100%', label: 'Commitment to quality on every job' },
+            { num: 7,   suffix: '+',  label: 'Years of experience in Greater Victoria' },
+            { num: 50,  suffix: '+',  label: 'Projects completed across the island' },
+            { num: 100, suffix: '%',  label: 'Commitment to quality on every job' },
           ].map(s => (
             <div class="stat-row v2-reveal py-8 flex items-baseline gap-6">
-              <span class="font-display text-coal text-5xl md:text-6xl lg:text-7xl leading-none shrink-0">{s.num}</span>
+              <span class="font-display text-coal text-5xl md:text-6xl lg:text-7xl leading-none shrink-0">
+                <span class="stat-num" data-target={s.num}>0</span>{s.suffix}
+              </span>
               <span class="font-body text-coal/60 text-sm leading-6 max-w-[180px]">{s.label}</span>
             </div>
           ))}
@@ -327,9 +347,13 @@ import Layout from '../layouts/Layout.astro';
   ═══════════════════════════════════════════════════════ -->
   <section id="v2-contact" class="bg-rust py-20 md:py-32 px-6 md:px-10 lg:px-16 overflow-hidden relative">
 
-    <!-- Decorative starburst -->
-    <img src="/images/starburst.svg" alt="" aria-hidden="true"
-      class="spin-slow absolute right-8 top-8 md:right-16 md:top-16 w-32 md:w-48 opacity-20" />
+    <!-- Decorative starburst + tree -->
+    <div class="absolute right-8 top-8 md:right-16 md:top-16 w-32 md:w-48 flex items-center justify-center">
+      <img src="/images/starburst.svg" alt="" aria-hidden="true"
+        class="spin-slow absolute inset-0 w-full h-full opacity-25" />
+      <img src="/images/tree.png" alt="" aria-hidden="true"
+        class="relative w-16 md:w-24 mix-blend-multiply opacity-60" />
+    </div>
 
     <div class="max-w-7xl mx-auto">
       <p class="v2-reveal font-body text-gold/60 text-xs tracking-[0.3em] uppercase mb-6">Ready to Start?</p>
@@ -448,9 +472,9 @@ import Layout from '../layouts/Layout.astro';
     --nav-border: var(--color-cream);
   }
   #v2-nav.scrolled {
-    background-color: rgba(17, 13, 8, 0.96);
+    background-color: rgba(164, 55, 10, 0.97);
     backdrop-filter: blur(12px);
-    box-shadow: 0 2px 24px rgba(0,0,0,0.4);
+    box-shadow: 0 2px 32px rgba(0,0,0,0.35);
   }
   .nav-link  { color: var(--nav-text); transition: opacity 0.2s; }
   .nav-link:hover { opacity: 0.65; }
@@ -547,6 +571,14 @@ import Layout from '../layouts/Layout.astro';
     transition: transform 0.4s cubic-bezier(0.16,1,0.3,1), opacity 0.3s ease;
   }
   #contact-modal.open #modal-card { transform: translateY(0); opacity: 1; }
+
+  /* ── Marquee ─────────────────────────────────────────── */
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+  .marquee-track { animation: marquee 28s linear infinite; }
+  .marquee-strip:hover .marquee-track { animation-play-state: paused; }
 
   /* ── Floating anim (reused) ──────────────────────────── */
   .float-anim { animation: floatY 4s ease-in-out infinite; }
@@ -695,6 +727,26 @@ import Layout from '../layouts/Layout.astro';
         gsap.to(detail, { height: h, duration: 0.45, ease: EASE_OUT });
         btn.setAttribute('aria-expanded', 'true');
       }
+    });
+  });
+
+  // ── Stat count-up ────────────────────────────────────────
+  document.querySelectorAll<HTMLElement>('.stat-num').forEach(el => {
+    const target = parseInt(el.dataset.target ?? '0');
+    let triggered = false;
+    ScrollTrigger.create({
+      trigger: el,
+      start: 'top 85%',
+      onEnter: () => {
+        if (triggered) return;
+        triggered = true;
+        gsap.to({ val: 0 }, {
+          val: target,
+          duration: 1.4,
+          ease: 'power2.out',
+          onUpdate: function() { el.textContent = Math.round(this.targets()[0].val).toString(); },
+        });
+      },
     });
   });
 
