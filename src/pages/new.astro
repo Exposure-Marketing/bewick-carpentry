@@ -72,9 +72,11 @@ import Layout from '../layouts/Layout.astro';
         Greater Victoria, BC
       </p>
 
-      <!-- Main heading — split into lines by JS -->
+      <!-- Main heading — each span becomes an animated line -->
       <h1 id="hero-heading" class="font-display text-cream uppercase leading-[0.88] mb-8 md:mb-12" style="font-size: clamp(3.5rem, 9vw, 11rem); visibility: hidden;">
-        Crafts&shy;manship<br/>Is<br/>Everything
+        <span class="hero-word">Craftsmanship</span>
+        <span class="hero-word">Is</span>
+        <span class="hero-word">Everything</span>
       </h1>
 
       <!-- Divider line + subtext -->
@@ -458,7 +460,7 @@ import Layout from '../layouts/Layout.astro';
   }
   .nav-link  { color: var(--nav-text); transition: opacity 0.2s; }
   .nav-link:hover { opacity: 0.65; }
-  .nav-cta   { color: var(--nav-border); border-color: color-mix(in srgb, var(--nav-border) 40%, transparent); }
+  .nav-cta   { color: var(--nav-border); border-color: color-mix(in srgb, var(--nav-border) 40%, transparent); background: transparent; }
   .nav-cta:hover { background-color: var(--color-gold); color: var(--color-coal); border-color: var(--color-gold); }
 
   /* ── Definition lines ────────────────────────────────── */
@@ -527,11 +529,14 @@ import Layout from '../layouts/Layout.astro';
   .split-line-wrap {
     overflow: hidden;
     display: block;
+    line-height: 0.92;
+    padding-bottom: 0.08em;
   }
   .split-line {
     display: block;
     transform: translateY(110%);
     will-change: transform;
+    line-height: 0.88;
   }
 
   /* ── Modal ───────────────────────────────────────────── */
@@ -575,10 +580,22 @@ import Layout from '../layouts/Layout.astro';
   const EASE_OUT      = 'power3.out';
   const EASE_OUT_EXPO = 'expo.out';
 
+  // Wrap each child span in a clip container for line reveal
+  function wrapHeroLines(el: HTMLElement) {
+    el.querySelectorAll<HTMLElement>('.hero-word').forEach(word => {
+      word.classList.add('split-line');
+      const wrap = document.createElement('span');
+      wrap.className = 'split-line-wrap';
+      el.insertBefore(wrap, word);
+      wrap.appendChild(word);
+    });
+    return el.querySelectorAll<HTMLElement>('.split-line');
+  }
+
+  // For section headings: split plain text into lines
   function splitLines(el: HTMLElement) {
-    const text = el.innerText;
-    const lines = text.split('\n').filter(l => l.trim());
-    el.innerHTML = lines.map(line =>
+    const rawLines = el.textContent?.split('\n').map(l => l.trim()).filter(Boolean) ?? [];
+    el.innerHTML = rawLines.map(line =>
       `<span class="split-line-wrap"><span class="split-line">${line}</span></span>`
     ).join('');
     return el.querySelectorAll<HTMLElement>('.split-line');
@@ -610,7 +627,7 @@ import Layout from '../layouts/Layout.astro';
 
   if (heroHeading) {
     heroHeading.style.visibility = 'visible';
-    const lines = splitLines(heroHeading);
+    const lines = wrapHeroLines(heroHeading);
 
     const tl = gsap.timeline({ defaults: { ease: EASE_OUT_EXPO } });
     tl.from(heroEyebrow, { opacity: 0, y: 12, duration: 0.7, delay: 0.1 })
