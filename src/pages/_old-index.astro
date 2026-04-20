@@ -1,0 +1,425 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const services = [
+  'Outdoor Structures',
+  'Renovations & Repairs',
+  'Pressure Washing',
+  'Landscaping',
+  'Small Furniture Builds',
+];
+
+const values = ['Quality', 'Craftsmanship', 'Efficiency'];
+---
+
+<Layout title="Bewick Carpentry — Craftsmanship is Everything">
+
+  <!-- ═══════════════════════════════════════════════
+       NAV
+  ════════════════════════════════════════════════ -->
+  <nav id="main-nav" class="fixed top-0 left-0 right-0 z-50" aria-label="Main navigation">
+    <div class="max-w-7xl mx-auto px-6 md:px-12 py-4 flex items-center justify-between">
+
+      <a href="#" aria-label="Bewick Carpentry home">
+        <img src="/images/logo.png" alt="Bewick Carpentry" class="h-11 md:h-14 w-auto" />
+      </a>
+
+      <div class="hidden md:flex items-center gap-10">
+        <a href="#about"    class="font-display text-gold text-sm tracking-[0.2em] uppercase hover:text-gold-light transition-colors duration-200 no-underline">About</a>
+        <a href="#services" class="font-display text-gold text-sm tracking-[0.2em] uppercase hover:text-gold-light transition-colors duration-200 no-underline">Services</a>
+        <button data-open-modal class="font-display text-sm tracking-[0.2em] uppercase px-5 py-2 border border-gold text-gold hover:bg-gold hover:text-coal transition-all duration-200">Contact</button>
+      </div>
+
+      <button id="menu-toggle" class="md:hidden text-gold p-2 hover:text-gold-light transition-colors" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <line x1="2" y1="5"  x2="20" y2="5"/>
+          <line x1="2" y1="11" x2="20" y2="11"/>
+          <line x1="2" y1="17" x2="20" y2="17"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile dropdown -->
+    <div id="mobile-menu" class="bg-coal/97 border-t border-gold/20 px-8 py-8 gap-7">
+      <a href="#about"    class="font-display text-gold text-2xl tracking-wider uppercase block py-1">About</a>
+      <a href="#services" class="font-display text-gold text-2xl tracking-wider uppercase block py-1">Services</a>
+      <button data-open-modal class="font-display text-gold text-2xl tracking-wider uppercase block py-1 text-left w-full">Contact</button>
+    </div>
+  </nav>
+
+  <!-- ═══════════════════════════════════════════════
+       HERO
+  ════════════════════════════════════════════════ -->
+  <section class="relative bg-bark overflow-hidden">
+
+    <!-- Photo: absolutely fills right half, bleeds behind headline -->
+    <div class="hero-photo absolute top-0 right-0 bottom-0 w-full md:w-[58%] lg:w-[54%]">
+      <img
+        src="/images/hero-interior.jpg"
+        alt="Timber frame interior built by Bewick Carpentry"
+        class="absolute inset-0 w-full h-full object-cover object-center"
+        loading="eager"
+      />
+      <!-- Left edge dissolves into bark background -->
+      <div class="absolute inset-y-0 left-0 w-40 md:w-56 lg:w-72 bg-gradient-to-r from-bark to-transparent"></div>
+      <!-- Mobile: bottom dissolves for text readability -->
+      <div class="absolute inset-x-0 bottom-0 h-56 bg-gradient-to-t from-bark to-transparent md:hidden"></div>
+      <!-- Floating location badge — desktop only -->
+      <div class="hidden md:block absolute bottom-16 left-6 lg:left-10 bg-coal/85 backdrop-blur-md border border-gold/30 px-5 py-4 shadow-2xl">
+        <p class="font-display text-gold/50 text-xs tracking-[0.25em] uppercase mb-1">Proudly serving</p>
+        <p class="font-display text-gold text-base md:text-lg tracking-wider">Greater Victoria, BC</p>
+      </div>
+    </div>
+
+    <!-- Content: sits left, z above photo -->
+    <div class="relative z-10 flex flex-col px-8 md:px-14 lg:px-20 pt-36 md:pt-44 pb-24 md:pb-28">
+
+      <!-- Headline: large Rye type that bleeds behind the photo -->
+      <h1 class="hero-tagline font-display text-gold leading-[0.88] uppercase">
+        <span class="block text-[clamp(1.9rem,4.8vw,5.5rem)]">Crafts&shy;manship</span>
+        <span class="block text-[clamp(1.9rem,4.8vw,5.5rem)] text-gold/55">Is</span>
+        <span class="block text-[clamp(1.9rem,4.8vw,5.5rem)]">Everything</span>
+      </h1>
+
+      <!-- CTA row -->
+      <div class="hero-ctas flex flex-col sm:flex-row items-start sm:items-center gap-5 pt-10 md:pt-12">
+        <button
+          data-open-modal
+          class="bg-gold text-coal font-display text-sm tracking-[0.2em] uppercase px-8 py-4 hover:bg-gold-light transition-colors duration-200 whitespace-nowrap"
+        >
+          Get in Touch
+        </button>
+        <a href="tel:2505349137" class="flex items-center gap-4 group no-underline">
+          <div class="w-11 h-11 border border-gold/30 flex items-center justify-center flex-shrink-0 group-hover:border-gold group-hover:bg-gold/10 transition-all duration-200">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" class="text-gold">
+              <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.07 1.18 2 2 0 012.06 0h3a2 2 0 012 1.72 12.8 12.8 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.8 12.8 0 002.81.7A2 2 0 0122 14.92z"/>
+            </svg>
+          </div>
+          <div>
+            <p class="text-cream-dim text-xs tracking-[0.15em] uppercase mb-0.5">Call anytime</p>
+            <p class="font-display text-gold text-lg tracking-wider group-hover:text-gold-light transition-colors duration-200">250-534-9137</p>
+          </div>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Service strip -->
+  <div class="bg-rust border-t border-gold/15 py-8 px-8 md:px-14 lg:px-20">
+    <div class="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-3 sm:divide-x divide-gold/20">
+      {[
+        { icon: '/images/icon-structures.svg',  title: 'Outdoor Structures',    desc: 'Decks, sheds, pergolas — built to last in BC weather.' },
+        { icon: '/images/icon-renovation.svg',  title: 'Renovations & Repairs', desc: 'Interior and exterior work done right, on time.' },
+        { icon: '/images/icon-landscaping.svg', title: 'Odd Jobs & More',       desc: 'Pressure washing, landscaping, furniture builds.' },
+      ].map(s => (
+        <div class="px-0 sm:px-6 first:pl-0 last:pr-0 py-4 sm:py-0">
+          <img src={s.icon} alt="" aria-hidden="true" class="icon-service h-9 w-auto mb-3 opacity-80" />
+          <h3 class="font-display text-gold text-base tracking-wide mb-1">{s.title}</h3>
+          <p class="text-cream-dim text-sm leading-6 font-body">{s.desc}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════
+       ABOUT
+  ════════════════════════════════════════════════ -->
+  <section id="about" class="bg-forest py-20 md:py-28 px-8 md:px-14 lg:px-24 overflow-hidden">
+    <div class="max-w-5xl mx-auto space-y-16">
+
+      <!-- Tagline row -->
+      <div class="reveal flex flex-col md:flex-row items-center md:items-start gap-8 md:gap-12">
+        <p class="font-display text-gold text-2xl md:text-3xl leading-snug tracking-wide flex-1">
+          Focused on providing high&nbsp;quality carpentry based services inside
+          and outside of your home.
+        </p>
+        <img
+          src="/images/saw.png"
+          alt=""
+          aria-hidden="true"
+          class="float-anim w-44 md:w-56 opacity-80 flex-shrink-0 mix-blend-multiply"
+        />
+      </div>
+
+      <!-- Philosophy row -->
+      <div class="reveal flex flex-col md:flex-row items-center md:items-start gap-10 md:gap-16">
+        <img
+          src="/images/mallet.png"
+          alt=""
+          aria-hidden="true"
+          class="float-anim w-16 md:w-24 flex-shrink-0 order-last md:order-first mix-blend-multiply opacity-90"
+          style="animation-delay: 0.6s;"
+        />
+        <p class="text-cream text-lg md:text-xl leading-9 max-w-2xl">
+          Bewick Carpentry is based on the philosophy that if you are going to
+          do something, do it to the absolute best of your abilities. I bring
+          this ethic to every job that I do and carry on the Canadian tradition
+          of true craftsmanship. Serving the Greater Victoria area, I take great
+          pride in creating strong working relationships with my customers based
+          on goodwill and providing an excellent product.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       SERVICES
+  ════════════════════════════════════════════════ -->
+  <section id="services" class="bg-coal py-20 md:py-28 px-8 md:px-14 lg:px-24">
+    <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 md:gap-16 items-center">
+
+      <!-- Text content -->
+      <div>
+        <h2 class="reveal font-display text-gold text-4xl md:text-5xl lg:text-6xl tracking-wide mb-8 leading-tight">
+          What We Do
+        </h2>
+        <p class="reveal text-cream text-lg md:text-xl leading-9 mb-10">
+          Our niche is building outdoor structures and small scale renovations
+          and repairs. With a wide range of expertise, Bewick Carpentry can also
+          take care of many different odd jobs that need to be done such as
+          pressure washing, landscaping and small furniture builds.
+        </p>
+
+        <ul class="stagger space-y-4 mb-12">
+          {services.map(service => (
+            <li class="flex items-center gap-4 text-cream">
+              <span class="text-gold text-xl leading-none select-none">—</span>
+              <span class="font-body text-lg tracking-wide">{service}</span>
+            </li>
+          ))}
+        </ul>
+
+        <div class="stagger flex flex-wrap gap-3">
+          {values.map(v => (
+            <span class="font-display text-sm tracking-[0.2em] uppercase text-coal bg-gold px-5 py-2">{v}</span>
+          ))}
+        </div>
+      </div>
+
+      <!-- Photo -->
+      <div class="reveal-fade relative aspect-[3/4] md:aspect-auto md:h-[580px] overflow-hidden">
+        <img
+          src="/images/carpenter-sunset.jpg"
+          alt="Carpenter at work during golden hour on a Victoria renovation"
+          class="absolute inset-0 w-full h-full object-cover object-center"
+          loading="lazy"
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-coal/40 to-transparent pointer-events-none"></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       CONTACT
+  ════════════════════════════════════════════════ -->
+  <section id="contact" class="bg-rust py-20 md:py-28 px-8 md:px-14 lg:px-24 overflow-hidden">
+    <div class="max-w-5xl mx-auto">
+
+      <!-- Decorative starburst + tree -->
+      <div class="reveal flex justify-center mb-14 relative h-32 md:h-40">
+        <img
+          src="/images/starburst.svg"
+          alt=""
+          aria-hidden="true"
+          class="spin-slow absolute inset-0 w-full max-w-[160px] md:max-w-[200px] mx-auto h-full object-contain opacity-70"
+        />
+        <img
+          src="/images/tree.png"
+          alt=""
+          aria-hidden="true"
+          class="relative z-10 w-20 md:w-28 self-center mix-blend-multiply"
+        />
+      </div>
+
+      <!-- Contact body -->
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-10">
+
+        <div class="reveal">
+          <h2 class="font-display text-gold text-5xl md:text-7xl lg:text-8xl tracking-widest uppercase mb-7 leading-none">
+            Contact
+          </h2>
+          <a
+            href="tel:2505349137"
+            class="block font-display text-gold text-2xl md:text-3xl tracking-wider mb-3 hover:text-gold-light transition-colors duration-200"
+          >
+            250-534-9137
+          </a>
+          <a
+            href="mailto:lukasbewick@gmail.com"
+            class="block font-display text-gold text-xl md:text-2xl tracking-wider mb-6 hover:text-gold-light transition-colors duration-200"
+          >
+            lukasbewick@gmail.com
+          </a>
+          <button
+            data-open-modal
+            class="font-display text-sm tracking-[0.2em] uppercase px-8 py-4 bg-forest text-gold border-2 border-gold hover:bg-gold hover:text-coal transition-all duration-200"
+          >
+            Get in Touch
+          </button>
+        </div>
+
+        <!-- Instagram -->
+        <div class="reveal flex items-center gap-3 group">
+          <img
+            src="/images/instagram.svg"
+            alt="Instagram"
+            class="w-10 h-10 group-hover:scale-110 transition-transform duration-200"
+          />
+          <a
+            href="https://www.instagram.com/bewickcarpentry"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="font-display text-gold text-lg md:text-xl tracking-[0.15em] uppercase hover:text-gold-light transition-colors duration-200"
+          >
+            bewickcarpentry
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       FOOTER
+  ════════════════════════════════════════════════ -->
+  <footer class="bg-coal-soft py-6 px-8 text-center border-t border-white/5">
+    <p class="text-cream-dim text-sm font-body tracking-[0.2em] uppercase">
+      © {new Date().getFullYear()} Bewick Carpentry · Greater Victoria, BC
+    </p>
+  </footer>
+
+  <!-- ═══════════════════════════════════════════════
+       CONTACT MODAL
+  ════════════════════════════════════════════════ -->
+  <div id="contact-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+
+    <!-- Backdrop -->
+    <div id="modal-backdrop" class="absolute inset-0 bg-coal/80 backdrop-blur-sm"></div>
+
+    <!-- Card -->
+    <div id="modal-card" class="relative bg-forest border-2 border-gold/40 w-full max-w-md mx-4 shadow-2xl overflow-hidden">
+
+      <!-- Gold top bar -->
+      <div class="h-1 bg-gold w-full"></div>
+
+      <div class="px-8 py-10">
+
+        <!-- Header row -->
+        <div class="flex items-start justify-between mb-8">
+          <img src="/images/logo.png" alt="Bewick Carpentry" class="h-14 w-auto" />
+          <button id="close-modal" class="text-gold/60 hover:text-gold transition-colors p-1 mt-1" aria-label="Close">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+              <line x1="3" y1="3" x2="19" y2="19"/>
+              <line x1="19" y1="3" x2="3" y2="19"/>
+            </svg>
+          </button>
+        </div>
+
+        <h2 id="modal-title" class="font-display text-gold text-3xl tracking-wider uppercase mb-8 leading-tight">
+          Get in Touch
+        </h2>
+
+        <div class="space-y-5">
+
+          <!-- Phone -->
+          <a href="tel:2505349137" class="flex items-center gap-4 group">
+            <div class="w-10 h-10 border border-gold/40 flex items-center justify-center flex-shrink-0 group-hover:bg-gold/10 transition-colors">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" class="text-gold">
+                <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.07 1.18 2 2 0 012.06 0h3a2 2 0 012 1.72 12.8 12.8 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.8 12.8 0 002.81.7A2 2 0 0122 14.92z"/>
+              </svg>
+            </div>
+            <span class="font-display text-gold text-xl tracking-wider group-hover:text-gold-light transition-colors">250-534-9137</span>
+          </a>
+
+          <!-- Email -->
+          <a href="mailto:lukasbewick@gmail.com" class="flex items-center gap-4 group">
+            <div class="w-10 h-10 border border-gold/40 flex items-center justify-center flex-shrink-0 group-hover:bg-gold/10 transition-colors">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" class="text-gold">
+                <rect x="2" y="4" width="20" height="16" rx="2"/>
+                <path d="M2 7l10 7 10-7"/>
+              </svg>
+            </div>
+            <span class="font-display text-gold text-lg tracking-wider group-hover:text-gold-light transition-colors break-all">lukasbewick@gmail.com</span>
+          </a>
+
+          <!-- Instagram -->
+          <a href="https://www.instagram.com/bewickcarpentry" target="_blank" rel="noopener noreferrer" class="flex items-center gap-4 group">
+            <div class="w-10 h-10 border border-gold/40 flex items-center justify-center flex-shrink-0 group-hover:bg-gold/10 transition-colors">
+              <img src="/images/instagram.svg" alt="" class="w-5 h-5" />
+            </div>
+            <span class="font-display text-gold text-lg tracking-wider uppercase group-hover:text-gold-light transition-colors">@bewickcarpentry</span>
+          </a>
+
+        </div>
+
+        <div class="mt-8 pt-6 border-t border-gold/20 text-center">
+          <p class="text-cream-dim text-sm font-body tracking-[0.2em] uppercase">Greater Victoria, BC</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</Layout>
+
+<script>
+  // ── Nav scroll ──────────────────────────────────────
+  const nav = document.getElementById('main-nav');
+  window.addEventListener('scroll', () => {
+    nav?.classList.toggle('scrolled', window.scrollY > 80);
+  }, { passive: true });
+
+  // ── Mobile menu ─────────────────────────────────────
+  const menuBtn    = document.getElementById('menu-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  function setMenuOpen(open: boolean) {
+    mobileMenu?.classList.toggle('open', open);
+    menuBtn?.setAttribute('aria-expanded', String(open));
+    menuBtn?.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  }
+
+  menuBtn?.addEventListener('click', () => {
+    const isOpen = mobileMenu?.classList.contains('open');
+    setMenuOpen(!isOpen);
+  });
+  mobileMenu?.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => setMenuOpen(false));
+  });
+
+  // ── Scroll reveals ───────────────────────────────────
+  const observer = new IntersectionObserver(
+    entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
+    { threshold: 0.1 }
+  );
+  document.querySelectorAll('.reveal, .reveal-fade, .stagger').forEach(el => observer.observe(el));
+
+  // ── Contact modal ────────────────────────────────────
+  const modal    = document.getElementById('contact-modal');
+  const backdrop = document.getElementById('modal-backdrop');
+  const closeBtn = document.getElementById('close-modal');
+
+  function openModal() {
+    modal?.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    modal?.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  document.querySelectorAll('[data-open-modal]').forEach(el => {
+    el.addEventListener('click', () => {
+      setMenuOpen(false);
+      openModal();
+    });
+  });
+
+  closeBtn?.addEventListener('click', closeModal);
+  backdrop?.addEventListener('click', closeModal);
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+</script>
