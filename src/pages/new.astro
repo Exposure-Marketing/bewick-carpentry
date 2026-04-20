@@ -46,7 +46,7 @@ import Layout from '../layouts/Layout.astro';
   <!-- ════════════════════════════════════════════════════
        HERO
   ═══════════════════════════════════════════════════════ -->
-  <section id="v2-hero" class="relative min-h-screen flex flex-col bg-coal overflow-hidden">
+  <section id="v2-hero" class="relative min-h-[100svh] flex flex-col bg-coal overflow-hidden grain">
 
     <!-- Background photo with parallax container -->
     <div id="hero-bg" class="absolute inset-0">
@@ -65,7 +65,7 @@ import Layout from '../layouts/Layout.astro';
     </div>
 
     <!-- Hero content -->
-    <div class="relative z-10 flex flex-col justify-end flex-1 px-6 md:px-10 lg:px-16 pb-16 md:pb-24 pt-32">
+    <div class="relative z-[11] flex flex-col justify-end flex-1 px-6 md:px-10 lg:px-16 pb-10 md:pb-24 pt-24 md:pt-32">
 
       <!-- Eyebrow -->
       <p id="hero-eyebrow" class="font-body text-gold/60 text-xs tracking-[0.35em] uppercase mb-6 md:mb-8">
@@ -73,7 +73,7 @@ import Layout from '../layouts/Layout.astro';
       </p>
 
       <!-- Main heading — each span becomes an animated line -->
-      <h1 id="hero-heading" class="font-display text-cream uppercase leading-[0.88] mb-8 md:mb-12" style="font-size: clamp(1.35rem, 4.8vw, 6.5rem); visibility: hidden;">
+      <h1 id="hero-heading" class="font-display text-cream uppercase leading-[0.88] mb-8 md:mb-12" style="font-size: clamp(2.4rem, 4.8vw, 6.5rem); visibility: hidden;">
         <span class="hero-word">Craftsmanship</span>
         <span class="hero-word">Is Everything</span>
       </h1>
@@ -98,7 +98,7 @@ import Layout from '../layouts/Layout.astro';
   <!-- ════════════════════════════════════════════════════
        MARQUEE STRIP
   ═══════════════════════════════════════════════════════ -->
-  <div class="marquee-strip bg-forest border-y border-gold/20 py-4 overflow-hidden">
+  <div class="marquee-strip bg-forest border-y border-gold/20 py-4 overflow-hidden grain">
     <div class="marquee-track flex gap-0 whitespace-nowrap">
       {Array.from({length: 2}).map(() => (
         <div class="marquee-content flex items-center gap-0 shrink-0" aria-hidden="true">
@@ -131,8 +131,8 @@ import Layout from '../layouts/Layout.astro';
   <!-- ════════════════════════════════════════════════════
        SERVICES ACCORDION
   ═══════════════════════════════════════════════════════ -->
-  <section id="v2-services" class="bg-coal-soft py-20 md:py-28 px-6 md:px-10 lg:px-16">
-    <div class="max-w-7xl mx-auto">
+  <section id="v2-services" class="bg-coal py-20 md:py-28 px-6 md:px-10 lg:px-16 grain relative">
+    <div class="max-w-7xl mx-auto relative z-[11]">
 
       <!-- Section header -->
       <div class="flex items-end justify-between mb-14 md:mb-20 pb-6 border-b border-cream/10">
@@ -263,8 +263,8 @@ import Layout from '../layouts/Layout.astro';
   <!-- ════════════════════════════════════════════════════
        WORK / PROJECTS
   ═══════════════════════════════════════════════════════ -->
-  <section id="v2-work" class="bg-coal py-20 md:py-28 px-6 md:px-10 lg:px-16">
-    <div class="max-w-7xl mx-auto">
+  <section id="v2-work" class="bg-coal py-20 md:py-28 px-6 md:px-10 lg:px-16 grain relative">
+    <div class="max-w-7xl mx-auto relative z-[11]">
 
       <!-- Section header -->
       <div class="flex items-end justify-between mb-14 md:mb-16 pb-6 border-b border-cream/10">
@@ -316,28 +316,39 @@ import Layout from '../layouts/Layout.astro';
   <!-- ════════════════════════════════════════════════════
        PHILOSOPHY / ABOUT
   ═══════════════════════════════════════════════════════ -->
-  <section class="bg-forest py-20 md:py-28 px-6 md:px-10 lg:px-16">
-    <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 md:gap-20 items-center">
+  <section class="bg-cream py-20 md:py-28 px-6 md:px-10 lg:px-16 relative overflow-hidden">
+    <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 md:gap-20 items-center relative">
 
-      <!-- Decorative side — large saw fills the column -->
+      <!-- Decorative side — saw works great on cream with multiply -->
       <div class="v2-reveal-fade flex items-center justify-center order-last md:order-first">
         <img src="/images/saw.png" alt="" aria-hidden="true"
-          class="w-72 md:w-[28rem] lg:w-[34rem] float-anim opacity-55"
-          style="filter: brightness(0.9) saturate(0.6);" />
+          class="w-72 md:w-[28rem] lg:w-[34rem] float-anim mix-blend-multiply opacity-60" />
       </div>
 
       <!-- Text -->
       <div>
-        <p class="v2-reveal font-body text-gold/60 text-xs tracking-[0.3em] uppercase mb-6">Our Philosophy</p>
-        <h2 class="v2-split font-display text-cream text-3xl md:text-4xl lg:text-5xl tracking-wide leading-tight uppercase mb-8">
+        <p class="v2-reveal font-body text-rust text-xs tracking-[0.3em] uppercase mb-6">Our Philosophy</p>
+        <h2 class="v2-split font-display text-coal text-3xl md:text-4xl lg:text-5xl tracking-wide leading-tight uppercase mb-8">
           If You're Going to Do It, Do It Right
         </h2>
-        <p class="v2-reveal font-body text-cream/70 text-lg leading-9">
+        <p class="v2-reveal font-body text-coal/65 text-lg leading-9 mb-10">
           Bewick Carpentry is built on the belief that if you are going to do something, do it to the absolute best of your abilities. Every job — big or small — gets the same care and craftsmanship. Serving the Greater Victoria area with honesty, quality, and pride.
         </p>
-        <div class="v2-reveal flex flex-wrap gap-3 mt-8">
-          {['Quality', 'Craftsmanship', 'Efficiency'].map(v => (
-            <span class="font-display text-xs tracking-[0.2em] uppercase text-coal bg-gold px-5 py-2">{v}</span>
+
+        <!-- Feature blocks -->
+        <div class="v2-reveal grid grid-cols-3 gap-3 md:gap-4">
+          {[
+            { label: 'Quality',        desc: 'Every job done to the highest standard' },
+            { label: 'Craftsmanship',  desc: 'Carrying on the Canadian tradition' },
+            { label: 'Efficiency',     desc: 'On time and on budget, every time' },
+          ].map(f => (
+            <div class="border border-coal/15 bg-coal/5 pt-0 overflow-hidden">
+              <div class="h-0.5 w-full bg-gold"></div>
+              <div class="p-3 md:p-4">
+                <p class="font-display text-coal text-sm md:text-base tracking-wide uppercase mb-1">{f.label}</p>
+                <p class="font-body text-coal/55 text-xs leading-5">{f.desc}</p>
+              </div>
+            </div>
           ))}
         </div>
       </div>
@@ -348,17 +359,17 @@ import Layout from '../layouts/Layout.astro';
   <!-- ════════════════════════════════════════════════════
        CONTACT
   ═══════════════════════════════════════════════════════ -->
-  <section id="v2-contact" class="bg-rust py-20 md:py-32 px-6 md:px-10 lg:px-16 overflow-hidden relative">
+  <section id="v2-contact" class="bg-rust py-20 md:py-32 px-6 md:px-10 lg:px-16 overflow-hidden relative grain">
 
     <!-- Decorative starburst + tree — large, anchored to corner, clipped by overflow-hidden -->
-    <div class="absolute -right-10 -top-10 w-64 md:w-96 lg:w-[28rem] flex items-center justify-center aspect-square">
+    <div class="absolute -right-10 -top-10 w-80 md:w-[28rem] lg:w-[38rem] flex items-center justify-center aspect-square">
       <img src="/images/starburst.svg" alt="" aria-hidden="true"
         class="spin-slow absolute inset-0 w-full h-full opacity-20" />
       <img src="/images/tree.png" alt="" aria-hidden="true"
         class="relative w-20 md:w-28 lg:w-36 mix-blend-multiply opacity-55" />
     </div>
 
-    <div class="max-w-7xl mx-auto">
+    <div class="max-w-7xl mx-auto relative z-[11]">
       <p class="v2-reveal font-body text-gold/60 text-xs tracking-[0.3em] uppercase mb-6">Ready to Start?</p>
       <h2 class="v2-split font-display text-gold text-5xl md:text-7xl lg:text-8xl tracking-wide uppercase leading-none mb-14 md:mb-20">
         Get in<br/>Touch
@@ -410,7 +421,7 @@ import Layout from '../layouts/Layout.astro';
   <!-- ════════════════════════════════════════════════════
        FOOTER
   ═══════════════════════════════════════════════════════ -->
-  <footer class="bg-coal-soft py-10 px-6 md:px-10 flex flex-col md:flex-row items-center justify-between gap-4 border-t border-white/5">
+  <footer class="bg-coal py-10 px-6 md:px-10 flex flex-col md:flex-row items-center justify-between gap-4 border-t border-white/5">
     <img src="/images/logo.png" alt="Bewick Carpentry" class="h-8 w-auto opacity-60" />
     <p class="font-body text-cream-dim text-xs tracking-[0.2em] uppercase">
       © {new Date().getFullYear()} Bewick Carpentry · Greater Victoria, BC
@@ -480,20 +491,20 @@ import Layout from '../layouts/Layout.astro';
   }
   .nav-link  { color: var(--color-cream); transition: opacity 0.2s; }
   .nav-link:hover { opacity: 0.65; }
-  /* Nav CTA: ghost style using brand gold */
+  /* Nav CTA: solid gold — same system as btn */
   .nav-cta {
-    background: transparent;
-    color: var(--color-gold);
-    border: 1.5px solid color-mix(in srgb, var(--color-gold) 50%, transparent);
+    background: var(--color-gold);
+    color: var(--color-coal);
+    border: 2px solid var(--color-gold);
     font-family: var(--font-body);
     font-size: 0.8125rem;
     letter-spacing: 0.15em;
     text-transform: uppercase;
     padding: 0.5rem 1.25rem;
     cursor: pointer;
-    transition: background 0.2s, color 0.2s, border-color 0.2s;
+    transition: background 0.2s, border-color 0.2s;
   }
-  .nav-cta:hover { background: var(--color-gold); color: var(--color-coal); border-color: var(--color-gold); }
+  .nav-cta:hover { background: var(--color-gold-light); border-color: var(--color-gold-light); }
   #v2-menu-btn { background: transparent; border: none; cursor: pointer; }
 
   /* ── Definition lines ────────────────────────────────── */
@@ -578,8 +589,23 @@ import Layout from '../layouts/Layout.astro';
     from { transform: translateX(0); }
     to   { transform: translateX(-50%); }
   }
-  .marquee-track { animation: marquee 28s linear infinite; }
+  .marquee-track { animation: marquee var(--marquee-dur, 14s) linear infinite; }
+  @media (min-width: 768px) { .marquee-strip { --marquee-dur: 28s; } }
   .marquee-strip:hover .marquee-track { animation-play-state: paused; }
+
+  /* ── Grain/noise texture ─────────────────────────────── */
+  .grain { position: relative; }
+  .grain::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 10;
+    opacity: 0.04;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 200px 200px;
+    background-repeat: repeat;
+  }
 
   /* ── Floating anim (reused) ──────────────────────────── */
   .float-anim { animation: floatY 4s ease-in-out infinite; }
