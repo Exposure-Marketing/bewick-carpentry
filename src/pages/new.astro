@@ -84,7 +84,7 @@ import Layout from '../layouts/Layout.astro';
         <p class="font-body text-cream/70 text-base md:text-lg leading-8 max-w-md md:max-w-sm">
           High-quality carpentry, outdoor structures, and renovations for Greater Victoria homeowners.
         </p>
-        <button data-open-modal class="btn-primary whitespace-nowrap self-start md:self-auto">
+        <button data-open-modal class="btn whitespace-nowrap self-start md:self-auto">
           Get in Touch
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" class="inline ml-2 -translate-y-px">
             <path d="M2 7h10M7 2l5 5-5 5"/>
@@ -360,7 +360,7 @@ import Layout from '../layouts/Layout.astro';
 
     <div class="max-w-7xl mx-auto">
       <p class="v2-reveal font-body text-gold/60 text-xs tracking-[0.3em] uppercase mb-6">Ready to Start?</p>
-      <h2 class="v2-split font-display text-gold text-5xl md:text-7xl lg:text-8xl xl:text-9xl tracking-widest uppercase leading-none mb-14 md:mb-20">
+      <h2 class="v2-split font-display text-gold text-5xl md:text-7xl lg:text-8xl tracking-wide uppercase leading-none mb-14 md:mb-20">
         Get in<br/>Touch
       </h2>
 
@@ -394,7 +394,7 @@ import Layout from '../layouts/Layout.astro';
       </div>
 
       <div class="v2-reveal mt-14">
-        <button data-open-modal class="btn-primary-dark">
+        <button data-open-modal class="btn-ghost">
           Send a Message
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" class="inline ml-2 -translate-y-px">
             <path d="M2 7h10M7 2l5 5-5 5"/>
@@ -471,19 +471,30 @@ import Layout from '../layouts/Layout.astro';
 <style>
   /* ── Nav states ──────────────────────────────────────── */
   #v2-nav {
-    --nav-text:   var(--color-cream);
-    --nav-border: var(--color-cream);
+    transition: background-color 0.35s ease, box-shadow 0.35s ease;
   }
   #v2-nav.scrolled {
     background-color: rgba(164, 55, 10, 0.97);
     backdrop-filter: blur(12px);
     box-shadow: 0 2px 32px rgba(0,0,0,0.35);
   }
-  .nav-link  { color: var(--nav-text); transition: opacity 0.2s; }
+  .nav-link  { color: var(--color-cream); transition: opacity 0.2s; }
   .nav-link:hover { opacity: 0.65; }
-  .nav-cta   { color: var(--nav-border); border-color: color-mix(in srgb, var(--nav-border) 40%, transparent); background: transparent; }
+  /* Nav CTA: ghost style using brand gold */
+  .nav-cta {
+    background: transparent;
+    color: var(--color-gold);
+    border: 1.5px solid color-mix(in srgb, var(--color-gold) 50%, transparent);
+    font-family: var(--font-body);
+    font-size: 0.8125rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 0.5rem 1.25rem;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s, border-color 0.2s;
+  }
+  .nav-cta:hover { background: var(--color-gold); color: var(--color-coal); border-color: var(--color-gold); }
   #v2-menu-btn { background: transparent; border: none; cursor: pointer; }
-  .nav-cta:hover { background-color: var(--color-gold); color: var(--color-coal); border-color: var(--color-gold); }
 
   /* ── Definition lines ────────────────────────────────── */
   .def-line-h {
@@ -493,8 +504,8 @@ import Layout from '../layouts/Layout.astro';
     opacity: 0.15;
   }
 
-  /* ── Buttons ─────────────────────────────────────────── */
-  .btn-primary {
+  /* ── Buttons — two variants only ────────────────────── */
+  .btn, .btn-ghost {
     display: inline-flex;
     align-items: center;
     font-family: var(--font-body);
@@ -502,29 +513,16 @@ import Layout from '../layouts/Layout.astro';
     letter-spacing: 0.15em;
     text-transform: uppercase;
     padding: 0.875rem 2rem;
-    background: var(--color-gold);
-    color: var(--color-coal);
-    border: none;
     cursor: pointer;
-    transition: background 0.2s;
-  }
-  .btn-primary:hover { background: var(--color-gold-light); }
-
-  .btn-primary-dark {
-    display: inline-flex;
-    align-items: center;
-    font-family: var(--font-body);
-    font-size: 0.8125rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    padding: 0.875rem 2rem;
-    background: var(--color-forest);
-    color: var(--color-gold);
+    transition: background 0.2s, color 0.2s, border-color 0.2s;
     border: 2px solid var(--color-gold);
-    cursor: pointer;
-    transition: background 0.2s, color 0.2s;
   }
-  .btn-primary-dark:hover { background: var(--color-gold); color: var(--color-coal); }
+  /* Primary: gold fill */
+  .btn { background: var(--color-gold); color: var(--color-coal); }
+  .btn:hover { background: var(--color-gold-light); border-color: var(--color-gold-light); }
+  /* Ghost: transparent, gold border */
+  .btn-ghost { background: transparent; color: var(--color-gold); }
+  .btn-ghost:hover { background: var(--color-gold); color: var(--color-coal); }
 
   /* ── Service accordion ───────────────────────────────── */
   .service-row-btn { cursor: pointer; background: none; border: none; }
