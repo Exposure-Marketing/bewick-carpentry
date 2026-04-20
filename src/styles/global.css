@@ -10,6 +10,7 @@
   --color-forest-dark:  #133A16;
   --color-coal:         #0C0C0C;
   --color-coal-soft:    #181818;
+  --color-bark:         #110D08;
   --color-gold:         #D4A820;
   --color-gold-light:   #E8C458;
   --color-cream:        #F5EFE0;
@@ -124,9 +125,14 @@ html {
 }
 
 #main-nav.scrolled {
-  background-color: rgba(12, 12, 12, 0.96);
+  background-color: rgba(17, 13, 8, 0.96);
   backdrop-filter: blur(10px);
   box-shadow: 0 2px 24px rgba(0, 0, 0, 0.5);
+}
+
+/* ── Service strip icons ──────────────────────────────── */
+.icon-service {
+  filter: brightness(0) saturate(100%) invert(70%) sepia(80%) saturate(400%) hue-rotate(5deg) brightness(85%);
 }
 
 /* ── Contact modal ───────────────────────────────────── */
